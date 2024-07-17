@@ -1,0 +1,21 @@
+.outer {
+    padding: 1rem;
+margin: auto;
+max-width: fit-content;
+}
+#mainContainer {
+    width: 600px;
+    min-height: 100vh;
+    border: 1px solid black;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+
+p{
+    margin: 0;
+}
+p:focus {
+outline: none;
+
+}
