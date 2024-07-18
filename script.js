@@ -20,26 +20,6 @@ colorButton.addEventListener('input', (e) => {
 })
 
 
-function remove() {
-
-
-    document.querySelectorAll('#mainContainer p').forEach(element => {
-        console.log(element)
-        element.addEventListener('blur', () => {
-            if (element.innerText == '') {
-                element.remove()
-            }
-
-
-        })
-
-        element.addEventListener('focus', () => {
-            element.style.fontSize = fontSize
-            element.style.color = color;
-        })
-
-    });
-}
 
 
 sizeButton.addEventListener('input', (e) => {
@@ -59,7 +39,6 @@ addText.addEventListener('click', (e) => {
         history.shift()
     }
 
-    remove()
 
 })
 
@@ -70,7 +49,6 @@ backButton.addEventListener('click', (e) => {
         mainContainer.innerHTML = history[current]
 
     }
-    remove()
 
 })
 nextButton.addEventListener('click', (e) => {
@@ -82,7 +60,6 @@ nextButton.addEventListener('click', (e) => {
 
     }
 
-    remove()
 
 })
 
@@ -101,18 +78,24 @@ function addTextToMainContainer() {
     p.style.fontSize = fontSize + 'px';
     p.style.color = color;
     p.innerText = ' '
-   
-    p.addEventListener('input', (e) => {
-        p.style.fontSize = fontSize + 'px'
-        p.style.color = color;
-    })
+
+
     p.addEventListener('focus', (e) => {
         p.style.fontSize = fontSize + 'px'
         p.style.color = color;
     })
     mainContainer.appendChild(p)
-   
+
     p.focus()
+    p.addEventListener('input', (e) => {
+
+        p.style.fontSize = fontSize + 'px'
+        p.style.color = color;
+
+        if (!e.target.innerText && e.inputType == 'deleteContentBackward') {
+            p.remove()
+        }
+    })
 }
 
 
