@@ -6,6 +6,7 @@ let backButton = document.getElementById('backButton');
 let nextButton = document.getElementById('nextButton');
 
 
+setele = null;
 
 let value = null;
 let history = [];
@@ -77,8 +78,21 @@ function addTextToMainContainer() {
     p.contentEditable = true;
     p.style.fontSize = fontSize + 'px';
     p.style.color = color;
-    p.innerText = ' '
+    p.innerText = 'welcome'
 
+    p.style.position = 'absolute'
+    p.draggable = true;
+    p.style.left = 0;
+    p.style.top = 0;
+   
+    p.addEventListener('mousedown', (e) => {
+       
+        setele = p;
+    })
+    p.addEventListener('mouseup', (e) => {
+        
+        setele = null;
+    })
 
     p.addEventListener('focus', (e) => {
         p.style.fontSize = fontSize + 'px'
@@ -92,13 +106,23 @@ function addTextToMainContainer() {
         p.style.fontSize = fontSize + 'px'
         p.style.color = color;
 
-        if (!e.target.innerText && e.inputType == 'deleteContentBackward') {
-            p.remove()
-        }
+       
     })
 }
 
 
+mainContainer.addEventListener('mousemove', (e) => {
 
+
+    if (setele) {
+        let currentPosX = Number(setele.style.left.split('px')[0])
+        setele.style.left = (currentPosX + e.movementX) + 'px'
+
+        let currentPosY = Number(setele.style.top.split('px')[0])
+        setele.style.top = (currentPosY + e.movementY) + 'px'
+
+    }
+
+})
 
 

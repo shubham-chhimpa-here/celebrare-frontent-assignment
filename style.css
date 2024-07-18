@@ -9,6 +9,7 @@ max-width: fit-content;
     border: 1px solid black;
     padding: 1rem;
     margin-top: 1rem;
+    position: relative;
 }
 
 
