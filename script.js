@@ -101,6 +101,7 @@ function addTextToMainContainer() {
     p.style.fontSize = fontSize + 'px';
     p.style.color = color;
     p.innerText = ' '
+   
     p.addEventListener('input', (e) => {
         p.style.fontSize = fontSize + 'px'
         p.style.color = color;
@@ -110,6 +111,8 @@ function addTextToMainContainer() {
         p.style.color = color;
     })
     mainContainer.appendChild(p)
+   
+    p.focus()
 }
 
 
